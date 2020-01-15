@@ -79,26 +79,6 @@ services:
       - LETSENCRYPT_HOST=oussama.jelliti.me
       - LETSENCRYPT_EMAIL=oussama@jelliti.me
 
-  postprocessing:
-    restart: always
-    container_name: postprocessing
-    build:
-      context: ./player/source//PostProcessing
-    hostname: oussama.jelliti.me
-    volumes:
-      - postprocessing:/home/node/app
-      - /var/run/docker.sock:/var/run/docker.sock
-     # - /var/player/source/test/node_modules:/home/node/app/node_modules
-    expose:
-       - 8082
-    ports:
-      - "8082:8082"
-    environment:
-      - VIRTUAL_HOST=oussama.jelliti.me
-      - VIRTUAL_PORT=8081
-      - NODE_ENV=production
-      - LETSENCRYPT_HOST=oussama.jelliti.me
-      - LETSENCRYPT_EMAIL=oussama@jelliti.me
 volumes:
   player: 
   test: 
@@ -107,7 +87,6 @@ volumes:
   html:
   dhparam:
   certs:
-  postprocessing:
 
 networks:
   default:

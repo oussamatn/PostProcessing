@@ -21,7 +21,7 @@ COPY package.json .
 
 USER node
 
-RUN npm ci --production
+RUN npm i --production
 
 
 COPY --chown=node:node . .
