@@ -6,9 +6,13 @@ const app = express();
 app.use(cors());
 
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = ["application/xls",
+  const allowedTypes = [
+    "application/xls",
     "application/x-xls",
-    "image/jpeg", "image/jpg", "image/png"];
+    "image/jpeg",
+    "image/jpg",
+    "image/png"
+  ];
   if (!allowedTypes.includes(file.mimetype)) {
     const error = new Error("Incorrect file");
     error.code = "INCORRECT_FILETYPE";
@@ -25,15 +29,14 @@ const upload = multer({
   }
 });
 
-const PORT = "8080" || process.env.PORT;
+const PORT = "8082" || process.env.PORT;
 
 app.post("/upload", upload.single("file"), (req, res) => {
-console.log("uploading a file");
+  console.log("uploading a file");
   res.json({ file: req.file });
 });
-app.get('/',function(req,res){
-  res.sendFile(__dirname + '/public/index.html');
- 
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 app.use((err, req, res, next) => {
