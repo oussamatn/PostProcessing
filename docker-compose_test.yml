@@ -79,10 +79,10 @@ services:
       - LETSENCRYPT_HOST=oussama.jelliti.me
       - LETSENCRYPT_EMAIL=oussama@jelliti.me
 
-  postprocessing:
+  PostProcessing:
     #image: "node:12.2.0-alpine"
     restart: always
-    container_name: postprocessing
+    container_name: PostProcessing
     build:
       context: ./postprocessing/source/test
     #command: node index.js
@@ -92,9 +92,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
      # - /var/player/source/test/node_modules:/home/node/app/node_modules
     expose:
-       - 8081
+       - 8082
     ports:
-      - "8081:8081"
+      - "8082:8082"
     environment:
       - VIRTUAL_HOST=oussama.jelliti.me
       - VIRTUAL_PORT=8081
