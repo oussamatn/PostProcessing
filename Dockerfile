@@ -39,7 +39,7 @@ WORKDIR /home/node/app
 USER node
 COPY --from=build --chown=node:node /home/node/app/dist ./dist
 
-CMD serve -s dist -l 8080
+CMD node app.js
 
 # production environment
 # TO be add

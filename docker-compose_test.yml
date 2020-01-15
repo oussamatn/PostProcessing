@@ -80,12 +80,10 @@ services:
       - LETSENCRYPT_EMAIL=oussama@jelliti.me
 
   PostProcessing:
-    #image: "node:12.2.0-alpine"
     restart: always
     container_name: PostProcessing
     build:
       context: ./postprocessing/source/test
-    #command: node index.js
     hostname: oussama.jelliti.me
     volumes:
       - postprocessing:/home/node/app
