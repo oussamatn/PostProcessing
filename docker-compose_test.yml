@@ -83,8 +83,8 @@ services:
     restart: always
     container_name: postprocessing
     build:
-      context: ./player/source//PostProcessing
-    hostname: oussama.jelliti.me
+      context: ./player/source/PostProcessing
+    hostname: player1.jelliti.me
     volumes:
       - postprocessing:/home/node/app
       - /var/run/docker.sock:/var/run/docker.sock

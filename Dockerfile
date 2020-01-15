@@ -8,7 +8,6 @@ RUN rm -rf /home/node/app
 # non-root user node
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
-
 RUN apk update && apk add git
 
 RUN which git
@@ -25,11 +24,6 @@ RUN npm i --production
 
 COPY --chown=node:node . .
 
-FROM node:12.2.0-alpine as PROD
-
-WORKDIR /home/node/app
-
-USER node
 
 CMD node app.js
 
