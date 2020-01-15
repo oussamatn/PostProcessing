@@ -23,21 +23,13 @@ USER node
 
 RUN npm i --production
 
-
 COPY --chown=node:node . .
 
-RUN npm run build
-
-RUN rm -rf ./node_modules
-
 FROM node:12.2.0-alpine as PROD
-
-RUN npm install -g serve 
 
 WORKDIR /home/node/app
 
 USER node
-COPY --from=build --chown=node:node /home/node/app/dist ./dist
 
 CMD node app.js
 
