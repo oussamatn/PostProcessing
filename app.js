@@ -16,11 +16,12 @@ app.get("/", function(req, res) {
 });
 
 app.post("/add", function(req, res) {
-    if (!file.originalname.match(/\.(xls|xlsx)$/)) {
-        return cb(new Error('Only Excel file are allowed.'), false);
-    }
+    
     const form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files) {
+      if (!file.originalname.match(/\.(xls|xlsx)$/)) {
+        return cb(new Error('Only Excel file are allowed.'), false);
+       }
         const f = files[Object.keys(files)[0]];
         const workbook = XLSX.readFile(f.path);
         /* DO SOMETHING WITH workbook HERE */
