@@ -19,10 +19,11 @@ app.post("/add", function(req, res) {
     
     const form = new formidable.IncomingForm();
     form.parse(req, function(err, fields, files) {
-      if (!file.originalname.match(/\.(xls|xlsx)$/)) {
-        return cb(new Error('Only Excel file are allowed.'), false);
-       }
+      
         const f = files[Object.keys(files)[0]];
+        if (!file.originalname.match(/\.(xls|xlsx)$/)) {
+          return cb(new Error('Only Excel file are allowed.'), false);
+         }
         const workbook = XLSX.readFile(f.path);
         /* DO SOMETHING WITH workbook HERE */
         const sheet = workbook.Sheets['Channel_'+1+'_1 '];
